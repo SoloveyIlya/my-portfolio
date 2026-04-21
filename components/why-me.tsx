@@ -43,7 +43,7 @@ export function WhyMe() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="mx-auto w-full max-w-7xl px-4 lg:px-6 pt-16 lg:pt-24">
+    <section ref={sectionRef} id="why-me" aria-label="Почему выбирают работу с Ильёй Соловьёвым" className="mx-auto w-full max-w-7xl px-4 lg:px-6 pt-16 lg:pt-24">
       <h2
         className="text-3xl lg:text-4xl font-bold text-[#1E2A3A] mb-12 uppercase text-center lg:text-left"
         style={{

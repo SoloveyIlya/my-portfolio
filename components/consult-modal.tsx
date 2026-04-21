@@ -12,6 +12,8 @@ interface ConsultModalProps {
 export function ConsultModal({ open, onClose }: ConsultModalProps) {
   const ref = useRef<HTMLDialogElement>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (open) {
@@ -21,13 +23,39 @@ export function ConsultModal({ open, onClose }: ConsultModalProps) {
       ref.current?.close();
       document.body.style.overflow = "";
       // сбросить состояние после закрытия
-      setTimeout(() => setSubmitted(false), 300);
+      setTimeout(() => {
+        setSubmitted(false);
+        setError(null);
+      }, 300);
     }
   }, [open]);
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setError(null);
+    const form = e.currentTarget;
+    const name = (form.elements.namedItem("name") as HTMLInputElement).value.trim();
+    const contact = (form.elements.namedItem("contact") as HTMLInputElement).value.trim();
+    const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value.trim();
+
+    setLoading(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, contact, message }),
+      });
+      if (!res.ok) {
+        const data = await res.json();
+        setError(data.error ?? "Ошибка отправки. Попробуйте ещё раз.");
+      } else {
+        setSubmitted(true);
+      }
+    } catch {
+      setError("Ошибка сети. Проверьте соединение и попробуйте снова.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -86,7 +114,9 @@ export function ConsultModal({ open, onClose }: ConsultModalProps) {
                 </label>
                 <input
                   id="name"
+                  name="name"
                   type="text"
+                  required
                   placeholder="Ваше имя"
                   className="w-full rounded-xl border border-zinc-200 px-4 py-3 text-sm text-[#1E2A3A] placeholder:text-zinc-400 outline-none focus:border-[#0066CC] transition-colors"
                 />
@@ -98,7 +128,9 @@ export function ConsultModal({ open, onClose }: ConsultModalProps) {
                 </label>
                 <input
                   id="contact"
+                  name="contact"
                   type="text"
+                  required
                   placeholder="email@example.com или @username"
                   className="w-full rounded-xl border border-zinc-200 px-4 py-3 text-sm text-[#1E2A3A] placeholder:text-zinc-400 outline-none focus:border-[#0066CC] transition-colors"
                 />
@@ -111,14 +143,19 @@ export function ConsultModal({ open, onClose }: ConsultModalProps) {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   rows={3}
                   placeholder="Что нужно сделать, какой бюджет, сроки..."
                   className="w-full rounded-xl border border-zinc-200 px-4 py-3 text-sm text-[#1E2A3A] placeholder:text-zinc-400 outline-none focus:border-[#0066CC] transition-colors resize-none"
                 />
               </div>
 
-              <Button type="submit" className="w-full mt-2">
-                Отправить заявку
+              {error && (
+                <p className="text-sm text-red-500 text-center">{error}</p>
+              )}
+
+              <Button type="submit" className="w-full mt-2" disabled={loading}>
+                {loading ? "Отправка..." : "Отправить заявку"}
               </Button>
             </form>
           </>

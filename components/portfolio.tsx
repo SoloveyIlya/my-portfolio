@@ -90,7 +90,7 @@ export function Portfolio() {
   const [featuredProject, ...smallProjects] = filtered.slice(0, 5);
 
   return (
-    <section id="portfolio" className="mx-auto w-full max-w-7xl px-4 lg:px-6 pt-16 lg:pt-24">
+    <section id="portfolio" aria-label="Портфолио проектов" className="mx-auto w-full max-w-7xl px-4 lg:px-6 pt-16 lg:pt-24">
       {/* Header */}
       <div className="mb-10 flex flex-col gap-3 items-center lg:items-start">
         <h2 className="text-3xl lg:text-4xl font-bold text-[#1E2A3A] uppercase text-center lg:text-left">

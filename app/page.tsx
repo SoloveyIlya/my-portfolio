@@ -8,10 +8,12 @@ import { Reviews } from "@/components/reviews";
 import { Faq } from "@/components/faq";
 import { Footer } from "@/components/footer";
 import { LeadMagnet } from "@/components/lead-magnet";
+import { JsonLd } from "@/components/json-ld";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white pt-20">
+      <JsonLd />
       <Header />
       <main>
         <Hero />

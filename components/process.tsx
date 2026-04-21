@@ -35,7 +35,7 @@ export function Process() {
   const { openModal } = useModal();
 
   return (
-    <section id="process" className="mx-auto w-full max-w-7xl px-4 lg:px-6 pt-16 lg:pt-24">
+    <section id="process" aria-label="Этапы работы над сайтом" className="mx-auto w-full max-w-7xl px-4 lg:px-6 pt-16 lg:pt-24">
       <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
         {/* Left — heading + photo */}
         <div className="flex flex-col gap-6 lg:w-1/2 shrink-0">
@@ -50,9 +50,9 @@ export function Process() {
 
           {/* Photo with consultation button */}
           <div className="relative w-full">
-            <div className="relative rounded-3xl overflow-hidden aspect-[1/1]">
+            <div className="relative rounded-[24px] lg:rounded-[50px] overflow-hidden aspect-[1/1]">
               <Image
-                src="/media/process.png"
+                src="/media/process-v2.png"
                 alt="Илья Соловьёв"
                 fill
                 className="object-cover object-top"

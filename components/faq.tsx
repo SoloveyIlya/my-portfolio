@@ -35,6 +35,7 @@ function FaqItem({ question, answer }: FaqItemProps) {
     <div className="border-b border-zinc-200 last:border-0">
       <button
         onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
         className="cursor-pointer w-full flex items-center justify-between gap-4 py-5 text-left"
       >
         <span className="text-base font-bold text-[#1E2A3A] leading-snug">{question}</span>
@@ -55,7 +56,7 @@ export function Faq() {
   const { openModal } = useModal();
 
   return (
-    <section className="mx-auto w-full max-w-7xl px-4 lg:px-6 pt-16 lg:pt-24">
+    <section id="faq" aria-label="Часто задаваемые вопросы" className="mx-auto w-full max-w-7xl px-4 lg:px-6 pt-16 lg:pt-24">
       <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
         {/* Left */}
         <div className="flex flex-col gap-6 lg:w-1/3 shrink-0 items-center lg:items-start text-center lg:text-left">

@@ -122,7 +122,7 @@ const services: ServiceCardProps[] = [
 
 export function Services() {
   return (
-    <section id="services" className="mx-auto w-full max-w-7xl px-4 lg:px-6 pt-16 lg:pt-24">
+    <section id="services" aria-label="Услуги по разработке сайтов" className="mx-auto w-full max-w-7xl px-4 lg:px-6 pt-16 lg:pt-24">
       <div className="mb-10 flex flex-col gap-3 items-center lg:items-start">
         <h2 className="text-3xl lg:text-4xl uppercase font-bold text-[#1E2A3A] text-center lg:text-left">
           Услуги полностью «Под ключ»

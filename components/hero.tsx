@@ -36,7 +36,7 @@ export function Hero() {
     displayCount > MAIN_PART.length ? BLUE_PART.slice(0, displayCount - MAIN_PART.length) : "";
 
   return (
-    <section className="mx-auto flex w-full max-w-7xl flex-col lg:flex-row items-center gap-12 lg:gap-16 px-6 pt-8 lg:pt-14">
+    <section aria-label="Разработка сайтов на заказ — Илья Соловьёв" className="mx-auto flex w-full max-w-7xl flex-col lg:flex-row items-center gap-12 lg:gap-16 px-6 pt-8 lg:pt-14">
       {/* Left */}
       <div className="flex flex-1 flex-col gap-6 lg:gap-8 items-center text-center lg:items-start lg:text-left">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-[#1E2A3A] uppercase">
@@ -74,7 +74,7 @@ export function Hero() {
         style={{ opacity: typingDone ? 1 : 0 }}
       >
         <Image
-          src="/media/portrait.png"
+          src="/media/portrait-v2.png"
           alt="Илья Соловьёв"
           width={490}
           height={600}

@@ -80,7 +80,7 @@ export function Reviews() {
   }
 
   return (
-    <section id="reviews" className="mx-auto w-full max-w-7xl px-4 lg:px-6 pt-16 lg:pt-24">
+    <section id="reviews" aria-label="Отзывы клиентов" className="mx-auto w-full max-w-7xl px-4 lg:px-6 pt-16 lg:pt-24">
       {/* Header */}
       <div className="flex items-center justify-between gap-4 mb-8">
         <div className="flex flex-col gap-2 w-full lg:w-auto items-center lg:items-start text-center lg:text-left">
