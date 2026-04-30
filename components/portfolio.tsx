@@ -10,6 +10,7 @@ type Category = "Лендинги" | "Корпоративные сайты";
 interface Project {
   image: string;
   title: string;
+  description: string;
   category: Category;
   url: string;
 }
@@ -20,60 +21,70 @@ const projects: Project[] = [
   {
     image: "/media/portfolio-1.jpg",
     title: "Услуги премиум клининга Time2Clean",
+    description: "Корпоративный сайт с онлайн-заявкой и каталогом услуг. Рост конверсии на 40% после запуска.",
     category: "Корпоративные сайты",
     url: "http://time2clean.ru",
   },
   {
     image: "/media/portfolio-2.jpg",
     title: "Сайт агентства недвижимости Метеор",
+    description: "Сайт с базой объектов и формой подбора. Увеличение входящих заявок в 2 раза.",
     category: "Корпоративные сайты",
     url: "https://meteor-dom.ru",
   },
   {
     image: "/media/portfolio-3.jpg",
     title: "Сайт IT компании Intezgroup на Битрикс",
+    description: "Корпоративный портал на Битрикс с личным кабинетом и интеграцией CRM.",
     category: "Корпоративные сайты",
     url: "https://intezgroup.ru",
   },
   {
     image: "/media/portfolio-4.jpg",
     title: "Лендинг по системе LOCKOUT TAGOUT",
+    description: "Продающий лендинг для B2B-сегмента. Стоимость заявки снижена на 35%.",
     category: "Лендинги",
     url: "http://lockout-system.ru",
   },
   {
     image: "/media/portfolio-5.jpg",
     title: "Лендинг для продажи детских курток COOL BRAND",
+    description: "Лендинг для e-commerce с фокусом на визуал и быструю покупку.",
     category: "Лендинги",
     url: "https://cool-brand.by",
   },
   {
     image: "/media/portfolio-6.jpg",
     title: "Сайт для сервиса Свой Мастер 96 с услугами по ремонту техники",
+    description: "Мультисервисный сайт с калькулятором стоимости ремонта и геолокацией.",
     category: "Корпоративные сайты",
     url: "https://new.svoymaster96.ru",
   },
   {
     image: "/media/portfolio-7.jpg",
     title: "Интернет магазин детского бренда комбинезонов Ice Tomas",
+    description: "Полноценный интернет-магазин с каталогом, корзиной и онлайн-оплатой.",
     category: "Корпоративные сайты",
     url: "https://icetomas.ru",
   },
   {
     image: "/media/portfolio-8.jpg",
     title: "Лендинг с услугами размещения на платформе weekend.by",
+    description: "Лендинг для туристической платформы с интерактивной картой объектов.",
     category: "Лендинги",
     url: "https://weekend.by/site/landing",
   },
   {
     image: "/media/portfolio-9.jpg",
     title: "Лендинг с услугами получения резидентства/гражданства в ЕС",
+    description: "Конверсионный лендинг для юридических услуг с мультиязычной поддержкой.",
     category: "Лендинги",
     url: "https://smart-eu-solution.ru",
   },
   {
     image: "/media/portfolio-10.jpg",
     title: "Лендинг для производства изделий из кварца «Quartz-X»",
+    description: "Лендинг для производителя с 3D-галереей изделий и формой расчёта.",
     category: "Лендинги",
     url: "https://quartz-x.ru",
   },
@@ -135,6 +146,11 @@ export function Portfolio() {
               className="object-cover transition-transform duration-300 group-hover:scale-105"
               onError={() => {}}
             />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-end p-5">
+              <p className="text-white text-sm leading-snug opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0">
+                {featuredProject.description}
+              </p>
+            </div>
           </div>
           <div className="flex flex-col gap-4 p-5 flex-1">
             <p className="text-base font-bold text-[#1E2A3A] leading-snug line-clamp-2">
@@ -150,7 +166,7 @@ export function Portfolio() {
                   window.open("https://www.fl.ru/users/ilyasolovey7/portfolio/", "_blank", "noopener,noreferrer");
                 }}
               >
-                Смотреть ещё
+                30+ проектов на FL.ru
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </div>
@@ -176,6 +192,11 @@ export function Portfolio() {
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                   onError={() => {}}
                 />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-end p-3">
+                  <p className="text-white text-xs leading-snug opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0">
+                    {project.description}
+                  </p>
+                </div>
               </div>
               <p className="text-sm font-bold text-[#1E2A3A] leading-snug line-clamp-2 px-4 pb-4">
                 {project.title}

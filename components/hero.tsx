@@ -56,10 +56,18 @@ export function Hero() {
               </a>
             ))}
           </nav>
-          <Button className="hidden md:inline-flex gap-2" onClick={openModal}><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>Написать</Button>
+          <Button className="hidden md:inline-flex gap-2" onClick={() => window.open('https://t.me/ilyasalauyou', '_blank')}><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>Написать</Button>
         </div>
 
         <div className="flex flex-1 flex-col gap-6 lg:gap-8 items-center text-center lg:items-start lg:text-left justify-center">
+        <div className="inline-flex items-center gap-2 rounded-full border border-[#0066CC]/30 bg-[#0066CC]/10 px-4 py-1.5">
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500" />
+          </span>
+          <span className="text-sm font-medium text-[#0066CC]">Доступен для новых проектов</span>
+        </div>
+
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-[#1E2A3A] uppercase max-w-[800px]">
           {mainShown}
           {blueShown && <span className="text-[#0066CC]">{blueShown}</span>}
@@ -86,6 +94,27 @@ export function Hero() {
           <a href="#portfolio">
             <Button variant="outline" className="w-full sm:w-auto border-[#1E2A3A] text-[#1E2A3A] hover:bg-[#1E2A3A] hover:text-white">Смотреть портфолио</Button>
           </a>
+        </div>
+
+        {/* Social proof */}
+        <div
+          className="flex flex-row w-full pt-2 border-t border-zinc-200 transition-opacity duration-700"
+          style={{ opacity: typingDone ? 1 : 0 }}
+        >
+          <div className="flex flex-1 flex-col gap-0.5 items-center text-center">
+            <span className="text-2xl font-bold text-[#1E2A3A]">30+</span>
+            <span className="text-xs text-zinc-500 leading-snug">успешно сданных проектов</span>
+          </div>
+          <div className="w-px bg-zinc-200 self-stretch" />
+          <div className="flex flex-1 flex-col gap-0.5 items-center text-center">
+            <span className="text-2xl font-bold text-[#1E2A3A]">4 года</span>
+            <span className="text-xs text-zinc-500 leading-snug">опыта в разработке веб-сайтов</span>
+          </div>
+          <div className="w-px bg-zinc-200 self-stretch" />
+          <div className="flex flex-1 flex-col gap-0.5 items-center text-center">
+            <span className="text-2xl font-bold text-[#1E2A3A]">от 30</span>
+            <span className="text-xs text-zinc-500 leading-snug">дней бесплатной поддержки после релиза</span>
+          </div>
         </div>
         </div>
       </div>
@@ -117,6 +146,11 @@ export function Hero() {
           <p className="text-white text-base leading-snug">
             Делаю так, чтобы ваш проект приносил клиентов и работал на имидж компании
           </p>
+          <div className="flex items-center gap-1.5 mt-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#FBBF24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <span className="text-white font-bold text-sm">4.9</span>
+            <span className="text-white/70 text-xs">рейтинг на FL.ru</span>
+          </div>
         </div>
       </div>
 

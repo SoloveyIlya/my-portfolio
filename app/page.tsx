@@ -19,7 +19,10 @@ export default function Home() {
         <Hero />
         <WhyMe />
         <Portfolio />
-        <LeadMagnet />
+        <LeadMagnet
+          title={<>Готовы запустить сайт, <span className="text-[#0066CC]">который продаёт?</span></>}
+          description="Напишите — обсудим задачу, подберём пакет и рассчитаем стоимость. Бесплатно и без обязательств"
+        />
         <Process />
         <Services />
         <LeadMagnet
@@ -28,6 +31,13 @@ export default function Home() {
         />
         <Reviews />
         <Faq />
+        <LeadMagnet
+          title={<>Остались вопросы? <span className="text-[#0066CC]">Напишите мне</span></>}
+          description="Обсудим вашу задачу, отвечу на любые вопросы и бесплатно рассчитаю стоимость проекта"
+          showForm
+          imageWidth={550} 
+          imageHeight={600}
+        />
       </main>
       <Footer />
     </div>

@@ -102,6 +102,7 @@ const services: ServiceCardProps[] = [
       "CMS для удобного управления",
       "SEO-оптимизация",
       "Интеграция с CRM и аналитикой",
+      "Сопровождение в течение 1 месяца после запуска",
       "До 3 итераций правок на каждом этапе",
     ],
   },
@@ -132,7 +133,7 @@ export function Services() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-center">
         {services.map((service) => (
           <ServiceCard key={service.title} {...service} />
         ))}

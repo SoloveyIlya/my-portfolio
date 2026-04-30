@@ -1,13 +1,13 @@
 "use client";
 
-import { FileText, Clock, Monitor, ShieldCheck } from "lucide-react";
+import { MessageCircle, Clock, Monitor, ShieldCheck } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const cards = [
   {
-    title: "Фиксированная цена в договоре",
-    description: "Никаких скрытых платежей и доплат в процессе разработки",
-    icon: FileText,
+    title: "Прямое общение",
+    description: "Никаких менеджеров и посредников. Вы общаетесь напрямую со мной",
+    icon: MessageCircle,
   },
   {
     title: "Понятные сроки без задержек",
@@ -45,7 +45,7 @@ export function WhyMe() {
   return (
     <section ref={sectionRef} id="why-me" aria-label="Почему выбирают работу с Ильёй Соловьёвым" className="mx-auto w-full max-w-7xl px-4 lg:px-6 pt-16 lg:pt-24">
       <h2
-        className="text-3xl lg:text-4xl font-bold text-[#1E2A3A] mb-12 uppercase text-center lg:text-left"
+        className="text-3xl lg:text-4xl font-bold text-[#1E2A3A] mb-4 uppercase text-center lg:text-left"
         style={{
           opacity: visible ? 1 : 0,
           transform: visible ? "translateY(0)" : "translateY(24px)",
@@ -54,6 +54,16 @@ export function WhyMe() {
       >
         Почему выбирают работу со мной
       </h2>
+      <p
+        className="text-base text-zinc-500 mb-12 text-center lg:text-left"
+        style={{
+          opacity: visible ? 1 : 0,
+          transform: visible ? "translateY(0)" : "translateY(24px)",
+          transition: "opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s",
+        }}
+      >
+        На фриланс-биржах тысячи разработчиков. Вот почему клиенты возвращаются ко мне снова
+      </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {cards.map(({ title, description, icon: Icon }, index) => {
           const isOdd = index % 2 === 0;
@@ -86,7 +96,7 @@ export function WhyMe() {
               </div>
               <div className="flex justify-end">
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center"
+                  className="w-12 h-12 rounded-full flex items-center justify-center"
                   style={
                     isOdd
                       ? { background: "linear-gradient(to bottom, #1E2A3A, #5374A0)" }
