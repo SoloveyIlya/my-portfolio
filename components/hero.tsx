@@ -36,11 +36,11 @@ export function Hero() {
     displayCount > MAIN_PART.length ? BLUE_PART.slice(0, displayCount - MAIN_PART.length) : "";
 
   return (
-    <section aria-label="Разработка сайтов на заказ — Илья Соловьёв" className="mx-auto flex w-full min-h-screen flex-col lg:flex-row gap-12 lg:gap-0">
+    <section aria-label="Разработка сайтов на заказ — Илья Соловьёв" className="mx-auto flex w-full min-h-screen flex-col lg:flex-row gap-12 lg:gap-0 pt-24 lg:pt-0">
       {/* Left */}
       <div className="flex flex-1 flex-col items-center text-center lg:items-start lg:text-left px-6">
         {/* Static hero header — at the very top of the page */}
-        <div className="flex items-center justify-between w-full h-20">
+        <div className="hidden lg:flex items-center justify-between w-full h-20">
           <div className="flex flex-col leading-tight">
             <span className="text-2xl font-bold text-[#1E2A3A] tracking-tight">Илья Соловьёв</span>
             <span className="text-sm text-zinc-500 font-medium">Опытная разработка сайтов</span>
@@ -104,7 +104,7 @@ export function Hero() {
         />
         {/* Badge */}
         <div
-          className="absolute left-0 lg:left-1/2 top-1/2 translate-y-20 w-[260px] px-5 py-4 backdrop-blur-md"
+          className="absolute left-6 lg:left-1/2 top-1/2 translate-y-20 w-[260px] px-5 py-4 backdrop-blur-md"
           style={{
             background: "rgba(0, 102, 204, 0.4)",
             borderRadius: "0px 28px 28px 28px",

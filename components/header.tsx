@@ -17,10 +17,17 @@ export function Header() {
   const { openModal } = useModal();
 
   useEffect(() => {
-    const handleScroll = () => setVisible(window.scrollY >= 600);
+    const handleScroll = () => {
+      const isMobile = window.innerWidth < 1024;
+      setVisible(isMobile || window.scrollY >= 600);
+    };
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   return (
