@@ -12,7 +12,7 @@ import { JsonLd } from "@/components/json-ld";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white pt-20">
+    <div className="min-h-screen bg-white">
       <JsonLd />
       <Header />
       <main>

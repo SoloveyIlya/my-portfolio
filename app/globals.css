@@ -7,6 +7,12 @@ html {
   font-size: 18px;
 }
 
+@media (max-width: 1439px) {
+  html {
+    font-size: 16px;
+  }
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
