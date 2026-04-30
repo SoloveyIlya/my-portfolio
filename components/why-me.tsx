@@ -45,7 +45,7 @@ export function WhyMe() {
   return (
     <section ref={sectionRef} id="why-me" aria-label="Почему выбирают работу с Ильёй Соловьёвым" className="mx-auto w-full max-w-7xl px-4 lg:px-6 pt-16 lg:pt-24">
       <h2
-        className="text-3xl lg:text-4xl font-bold text-[#1E2A3A] mb-4 uppercase text-center lg:text-left"
+        className="text-[clamp(1.75rem,4vw,2.25rem)] font-bold text-[#1E2A3A] mb-4 uppercase text-center lg:text-left"
         style={{
           opacity: visible ? 1 : 0,
           transform: visible ? "translateY(0)" : "translateY(24px)",

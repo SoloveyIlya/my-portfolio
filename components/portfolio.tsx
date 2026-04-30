@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -92,6 +92,17 @@ const projects: Project[] = [
 
 export function Portfolio() {
   const [activeTab, setActiveTab] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold: 0.1 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const filtered =
     activeTab === 0
@@ -101,10 +112,13 @@ export function Portfolio() {
   const [featuredProject, ...smallProjects] = filtered.slice(0, 5);
 
   return (
-    <section id="portfolio" aria-label="Портфолио проектов" className="mx-auto w-full max-w-7xl px-4 lg:px-6 pt-16 lg:pt-24">
+    <section ref={sectionRef} id="portfolio" aria-label="Портфолио проектов" className="mx-auto w-full max-w-7xl px-4 lg:px-6 pt-16 lg:pt-24">
       {/* Header */}
-      <div className="mb-10 flex flex-col gap-3 items-center lg:items-start">
-        <h2 className="text-3xl lg:text-4xl font-bold text-[#1E2A3A] uppercase text-center lg:text-left">
+      <div
+        className="mb-10 flex flex-col gap-3 items-center lg:items-start"
+        style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(24px)", transition: "opacity 0.6s ease, transform 0.6s ease" }}
+      >
+        <h2 className="text-[clamp(1.75rem,4vw,2.25rem)] font-bold text-[#1E2A3A] uppercase text-center lg:text-left">
           Реальные проекты — в цифрах и деталях
         </h2>
         <p className="text-base text-zinc-500 text-center lg:text-left">
@@ -113,7 +127,10 @@ export function Portfolio() {
       </div>
 
       {/* Tabs */}
-      <div className="mb-8 overflow-x-auto scrollbar-none">
+      <div
+        className="mb-8 overflow-x-auto scrollbar-none"
+        style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(16px)", transition: "opacity 0.5s ease 0.15s, transform 0.5s ease 0.15s" }}
+      >
         <div className="flex gap-2 bg-[#F0F2F5] rounded-full p-1.5 w-fit">
           {tabs.map((tab, i) => (
             <button
@@ -135,7 +152,10 @@ export function Portfolio() {
       {filtered.length === 0 ? (
         <p className="text-zinc-400 text-sm py-12 text-center">Проектов в этой категории пока нет</p>
       ) : (
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div
+        className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+        style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(32px)", transition: "opacity 0.6s ease 0.25s, transform 0.6s ease 0.25s" }}
+      >
         {/* Featured — left */}
         <a href={featuredProject.url} target="_blank" rel="noopener noreferrer" className="flex flex-col rounded-2xl overflow-hidden border border-zinc-100 cursor-pointer group order-2 lg:order-1">
           <div className="relative w-full aspect-square bg-zinc-100 flex items-center justify-center text-zinc-400 text-sm overflow-hidden">
@@ -144,9 +164,11 @@ export function Portfolio() {
               alt={featuredProject.title}
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAQAAAAnOwc2AAAAEUlEQVR42mNk+M9QzwAAAQQAAScAKAAAAABJRU5ErkJggg=="
               onError={() => {}}
             />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-end p-5">
+            <div className="absolute inset-0 bg-[#1E2A3A]/0 group-hover:bg-[#1E2A3A]/75 transition-all duration-300 flex items-end p-5">
               <p className="text-white text-sm leading-snug opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0">
                 {featuredProject.description}
               </p>
@@ -190,9 +212,11 @@ export function Portfolio() {
                   alt={project.title}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAQAAAAnOwc2AAAAEUlEQVR42mNk+M9QzwAAAQQAAScAKAAAAABJRU5ErkJggg=="
                   onError={() => {}}
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-end p-3">
+                <div className="absolute inset-0 bg-[#1E2A3A]/0 group-hover:bg-[#1E2A3A]/75 transition-all duration-300 flex items-end p-3">
                   <p className="text-white text-xs leading-snug opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0">
                     {project.description}
                   </p>

@@ -132,8 +132,11 @@ export function Hero() {
           priority
         />
         {/* Badge */}
-        <div
-          className="absolute left-6 lg:left-1/2 top-1/2 translate-y-20 w-[260px] px-5 py-4 backdrop-blur-md"
+        <a
+          href="https://t.me/ilyasalauyou"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute left-6 lg:left-1/2 top-1/2 translate-y-20 w-[260px] px-5 py-4 backdrop-blur-md hover:brightness-110 transition-[filter]"
           style={{
             background: "rgba(0, 102, 204, 0.4)",
             borderRadius: "0px 28px 28px 28px",
@@ -151,7 +154,7 @@ export function Hero() {
             <span className="text-white font-bold text-sm">4.9</span>
             <span className="text-white/70 text-xs">рейтинг на FL.ru</span>
           </div>
-        </div>
+        </a>
       </div>
 
       <style>{`

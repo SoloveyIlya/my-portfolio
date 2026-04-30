@@ -119,7 +119,7 @@ export function Reviews() {
       {/* Header */}
       <div className="flex items-center justify-between gap-4 mb-8">
         <div className="flex flex-col gap-2 w-full lg:w-auto items-center lg:items-start text-center lg:text-left">
-          <h2 className="text-3xl lg:text-4xl font-bold text-[#1E2A3A]">
+          <h2 className="text-[clamp(1.75rem,4vw,2.25rem)] font-bold text-[#1E2A3A]">
             Меня рекомендуют клиенты
           </h2>
           <p className="text-base text-zinc-500">Реальные отзывы о сотрудничестве</p>

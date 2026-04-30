@@ -54,7 +54,7 @@ export function Process() {
         {/* Left — heading + photo */}
         <div className="flex flex-col gap-6 lg:w-1/2 shrink-0">
           <div className="flex flex-col gap-3 items-center lg:items-start">
-            <h2 className="text-3xl lg:text-4xl font-bold text-[#1E2A3A] uppercase leading-tight text-center lg:text-left">
+            <h2 className="text-[clamp(1.75rem,4vw,2.25rem)] font-bold text-[#1E2A3A] uppercase leading-tight text-center lg:text-left">
               Этапы работы над проектом
             </h2>
             <p className="text-base text-zinc-500 leading-relaxed text-center lg:text-left">

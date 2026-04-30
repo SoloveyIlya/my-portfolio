@@ -2,6 +2,7 @@
 
 import { Check, ArrowRight } from "lucide-react";
 import { useModal } from "@/components/modal-provider";
+import { useRef, useEffect, useState } from "react";
 
 interface ServiceCardProps {
   title: string;
@@ -122,10 +123,25 @@ const services: ServiceCardProps[] = [
 ];
 
 export function Services() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold: 0.1 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="services" aria-label="Услуги по разработке сайтов" className="mx-auto w-full max-w-7xl px-4 lg:px-6 pt-16 lg:pt-24">
-      <div className="mb-10 flex flex-col gap-3 items-center lg:items-start">
-        <h2 className="text-3xl lg:text-4xl uppercase font-bold text-[#1E2A3A] text-center lg:text-left">
+    <section ref={sectionRef} id="services" aria-label="Услуги по разработке сайтов" className="mx-auto w-full max-w-7xl px-4 lg:px-6 pt-16 lg:pt-24">
+      <div
+        className="mb-10 flex flex-col gap-3 items-center lg:items-start"
+        style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(24px)", transition: "opacity 0.6s ease, transform 0.6s ease" }}
+      >
+        <h2 className="text-[clamp(1.75rem,4vw,2.25rem)] uppercase font-bold text-[#1E2A3A] text-center lg:text-left">
           Услуги полностью «Под ключ»
         </h2>
         <p className="text-base text-zinc-500 text-center lg:text-left">
@@ -133,7 +149,10 @@ export function Services() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-center">
+      <div
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-center"
+        style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(32px)", transition: "opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s" }}
+      >
         {services.map((service) => (
           <ServiceCard key={service.title} {...service} />
         ))}

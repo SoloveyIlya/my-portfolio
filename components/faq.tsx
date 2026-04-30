@@ -65,7 +65,7 @@ export function Faq() {
       <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
         {/* Left */}
         <div className="flex flex-col gap-6 lg:w-1/3 shrink-0 items-center lg:items-start text-center lg:text-left">
-          <h2 className="text-3xl lg:text-4xl font-bold text-[#1E2A3A]">
+          <h2 className="text-[clamp(1.75rem,4vw,2.25rem)] font-bold text-[#1E2A3A]">
             А что если...
           </h2>
           <p className="text-sm text-zinc-500 leading-relaxed">
